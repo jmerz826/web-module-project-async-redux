@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 const StyledArtwork = styled.div`
-    width:20%;
+    width: 28%;
     display:flex;
     flex-direction:column;
     align-items:center;

@@ -1,15 +1,8 @@
-export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const FETCH_START = 'FETCH_START';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
+export const SHOW_DETAILS = 'SHOW_DETAILS';
 
-
-export function addFavorite(id) {
-    return {
-        type: ADD_FAVORITE,
-        payload: id
-    };
-}
 
 export const fetchStart = () => {
     return {
@@ -29,5 +22,12 @@ export const fetchFailure = (err) => {
     return {
         type: FETCH_FAILURE,
         payload: err
+    }
+}
+
+export const showDetails = (id) => {
+    return {
+        type: SHOW_DETAILS,
+        payload:id
     }
 }
