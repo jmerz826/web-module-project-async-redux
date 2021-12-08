@@ -18,6 +18,7 @@ export const fetchStart = () => {
 };
 
 export const fetchSuccess = (art) => {
+    console.log('The Fetch was SUCCESSFUL!!!!!!')
     return {
         type: FETCH_SUCCESS,
         payload: art
