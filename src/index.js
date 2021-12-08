@@ -6,10 +6,11 @@ import './index.css';
 
 import artReducer from './reducers';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import logger from 'redux-logger';
 
-const store = createStore(artReducer);
+const store = createStore(artReducer, applyMiddleware(logger));
 
 ReactDOM.render(
   <Provider store={ store }>

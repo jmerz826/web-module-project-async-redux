@@ -1,7 +1,9 @@
-import { ADD_FAVORITE } from "../actions";
+import { ADD_FAVORITE, FETCH_START, FETCH_SUCCESS, FETCH_FAILURE } from "../actions";
 
 const initialState = {
-    title: 'Redux Art Gallery'
+    artworks: [],
+    isFetching: false,
+    error: ''
 };
 
 export default function artReducer(state = initialState, action){
@@ -10,7 +12,24 @@ export default function artReducer(state = initialState, action){
             return {
                 ...state,
                 favorites: [...favorites, action.payload]
-            }
+            };
+        case FETCH_START:
+            return {
+                ...state,
+                isFetching: true
+            };
+        case FETCH_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                artworks: action.payload
+            };
+        case FETCH_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload
+            };
         default:
           return state;
       }
