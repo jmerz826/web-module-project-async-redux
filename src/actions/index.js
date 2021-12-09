@@ -26,6 +26,7 @@ export const fetchFailure = (err) => {
 }
 
 export const showDetails = (id) => {
+    console.log(id);
     return {
         type: SHOW_DETAILS,
         payload:id

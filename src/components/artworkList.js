@@ -27,7 +27,7 @@ const StyledList = styled.div`
 const ArtworkList = (props) => {
     useEffect(() => {
         props.fetchStart();
-        axios.get('https://api.artic.edu/api/v1/artworks?page=1&limit=35')
+        axios.get('https://api.artic.edu/api/v1/artworks?page=1&limit=6')
             .then(res => {
                 console.log(res.data.data);
                 props.fetchSuccess(res.data.data);

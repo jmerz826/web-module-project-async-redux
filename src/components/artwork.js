@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { connect } from 'react-redux';
+import { showDetails } from "../actions";
+import Details from "./details";
 
 const StyledArtwork = styled.div`
     width: 28%;
@@ -21,14 +24,26 @@ const StyledArtwork = styled.div`
         text-align:center;
     }
     word-wrap: break-word;
-    
+
+    :hover{
+        cursor:pointer;
+    }
 `
+
+
 
 const Artwork = (props) => {
     const { artwork } = props;
+    const handleShowDetails = (id) => {
+        props.showDetails(id);
+        const modal = document.querySelector('#details-modal');
+        modal.classList.remove('hidden');
+    }
     const displayImageURL = `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`;
     return (
-        <StyledArtwork>
+        <StyledArtwork onClick={() => {
+            handleShowDetails(artwork.id);
+        }}>
             {
                 artwork.image_id ? 
                     <img src={displayImageURL} alt={artwork.credit_line} />
@@ -39,4 +54,10 @@ const Artwork = (props) => {
     );
 };
 
-export default Artwork;
+const mapStateToProps = state => {
+    return {
+        detailsDisplayed: state.detailsDisplayed
+    };
+}
+
+export default connect(mapStateToProps, {showDetails})(Artwork);

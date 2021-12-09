@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, FETCH_START, FETCH_SUCCESS, FETCH_FAILURE, SHOW_DETAILS } from "../actions";
+import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE, SHOW_DETAILS } from "../actions";
 
 const initialState = {
     artworks: [{title:'test piece', id:1}, {title: 'second artwork', id:2}],
@@ -9,11 +9,6 @@ const initialState = {
 
 export default function artReducer(state = initialState, action){
     switch (action.type) {
-        case ADD_FAVORITE:
-            return {
-                ...state,
-                favorites: [...favorites, action.payload]
-            };
         case FETCH_START:
             console.log('Fetch Starting!!');
             return {
