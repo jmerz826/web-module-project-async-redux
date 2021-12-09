@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import '../hidden.css';
 
 const StyledDetails = styled.div`
-    background-color:orangered;
+    background-color:rgba(61, 132, 206);
     border-radius:16px;
+    border: 4px solid black;
     position:fixed;
     z-index:1;
     top:0;
+    margin-top:5%;
     padding: 1%;
     width:60%;
     margin-left:20%;
@@ -41,9 +43,10 @@ const Details = (props) => {
                 <div>
                 <h3>Artwork: {selectedArtwork.title}</h3>
                 <img src={`https://www.artic.edu/iiif/2/${selectedArtwork.image_id}/full/843,/0/default.jpg`} />
-                <p>Artist: {selectedArtwork.artist_title} </p>
+                <p>Artist: {selectedArtwork.artist_title || 'unknown'} </p>
                 <p>Place of Origin: {selectedArtwork.place_of_origin}</p>
                 <p>Dates displayed: {selectedArtwork.date_start} - {selectedArtwork.date_end}</p>
+                <p>Dimensions: {selectedArtwork.dimensions}</p>
                 </div>
             }
             <button onClick={handleClose}>Close Window</button>
